@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/PartyHub.png" />
+    <link rel="icon" type="image/svg+xml" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PartyHubEvent</title>
   </head>
@@ -10,4 +10,20 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
+  <script>
+    fetch('https://youwillspeak.co/pages/contacts?locale=en')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.text(); // JSON formatında cavab gəlsə `.json()` istifadə edin
+  })
+  .then(data => {
+    console.log('Response:', data);
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
+  </script>
 </html>
