@@ -30,14 +30,40 @@ const Navbar = () => {
             />
 
             {/* searchbar */}
-            <div className="bg-[#FFFFFF33] flex items-center lg:w-[246px] lg:h-[42px]
-             rounded-sm border border-white/30 px-4">
+            <div
+              className="bg-[#FFFFFF33] flex items-center lg:w-[246px] lg:h-[42px]
+             rounded-sm border border-white/30 px-4"
+            >
               <input
                 type="text"
                 placeholder="Search Events"
                 className="bg-transparent text-white/70 placeholder-white/50 outline-none flex-grow"
               />
-              <button>
+
+              <button
+                onClick={async () => {
+                  try {
+                    const response = await fetch(
+                      "https://localhost:7218/api/EventCategoryHandler",
+                      {
+                        method: "GET",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                      }
+                    );
+
+                    if (!response.ok) {
+                      throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    console.log(data);
+                  } catch (error) {
+                    console.error("Fetch error:", error);
+                  }
+                }}
+              >
                 <img className="w-4 h-4" src={search} alt="Search Icon" />
               </button>
             </div>
