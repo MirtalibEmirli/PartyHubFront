@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -7,7 +8,8 @@ const App = () => {
       <Navbar />
       
       {/* forscrooll */}
-      <section className="h-[1400px]"></section>
+      <section className="h-[1000px]"></section>
+      <Footer/>
     </div>
   );
 };

@@ -1,0 +1,1 @@
+export const gradientstyle="border border-black lg:w-[85px] h-[40px] rounded-sm text-white bg-gradient-to-r from-[#FF006E] via-[#AA26C4] to-[#8338EC] font-medium text-[15px] hover:border-white transition-colors duration-500"

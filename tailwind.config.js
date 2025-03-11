@@ -4,7 +4,11 @@ module.exports = {
     "./public/index.html", // HTML faylları üçün
   ],
   theme: {
-    extend: {},
+    extend: {}
+    ,
+    fontFamily:{
+      poppins:["Poppins","sans-serif"]
+    }
   },
   plugins: [],
 };
