@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "/logo.png";
 import { Menu, X } from "lucide-react";
-import search from "../assets/search-md.png";
+import search from "../../assets/search-md.png";
 
 const Navbar = () => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
@@ -50,7 +50,8 @@ const Navbar = () => {
           <button className="border border-black lg:w-[85px] h-[40px] rounded-sm text-white bg-gradient-to-r from-[#FF006E] via-[#AA26C4] to-[#8338EC] font-medium text-[15px] hover:border-white transition-colors duration-500">
             Sign up
           </button>
-          <button className="border border-white hover:border-black transition-colors duration-500 w-[71px] h-[40px] rounded-sm text-white font-medium text-[15px]">
+          <button className="border border-white hover:border-black transition-colors duration-500 w-[71px] h-[40px]
+           rounded-sm text-white font-medium text-[15px]">
             Log in
           </button>
         </div>
