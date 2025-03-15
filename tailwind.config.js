@@ -7,7 +7,8 @@ module.exports = {
     extend: {}
     ,
     fontFamily:{
-      poppins:["Poppins","sans-serif"]
+      poppins:["Poppins","sans-serif"],
+      orbitron: ["Orbitron", "sans-serif"],
     }
   },
   plugins: [],

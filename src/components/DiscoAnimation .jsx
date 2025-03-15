@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import DiscoBall from '../../assets/disco.svg';
+import DiscoBall from '../assets/disco.svg';
 
 const DiscoAnimation = () => (
   <motion.div

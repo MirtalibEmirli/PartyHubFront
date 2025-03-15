@@ -2,7 +2,7 @@ import React from "react";
 import makeImg from "../assets/t1.png";
 import arl from "../assets/arrow-left.png";
 import arR from "../assets/arR.png";
-import DiscoAnimation from "./navbar/DiscoAnimation ";
+import DiscoAnimation from "./DiscoAnimation ";
 import insta from "../assets/instagram.png";
 import wp from "../assets/whatsapp.png";
 import dg from "../assets/designer.svg";
