@@ -2,10 +2,10 @@ import React from "react";
 import makeImg from "../assets/t1.png";
 import arl from "../assets/arrow-left.png";
 import arR from "../assets/arR.png";
-import DiscoAnimation from "./navbar/DiscoAnimation ";
 import insta from "../assets/instagram.png";
 import wp from "../assets/whatsapp.png";
 import dg from "../assets/designer.svg";
+import DiscoAnimation from "./DiscoAnimation ";
 const Footer = () => {
   return (
     <div className="flex flex-col justify-center items-center w-full py-4">
@@ -64,7 +64,7 @@ const Footer = () => {
           <a href="#">
             <img src={wp} alt="WhatsApp" />
           </a>
-          <a target="_blank" href="https://www.instagram.com/partyhub.events/">
+          <a target="_blank" href="https://www.instagram.com/partyhubevent/">
             <img src={insta} alt="Instagram" />
           </a>
         </div>
