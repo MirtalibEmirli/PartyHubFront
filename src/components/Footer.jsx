@@ -2,11 +2,11 @@ import React from "react";
 import makeImg from "../assets/t1.png";
 import arl from "../assets/arrow-left.png";
 import arR from "../assets/arR.png";
-import DiscoAnimation from "./DiscoAnimation ";
 import insta from "../assets/instagram.png";
 import wp from "../assets/whatsapp.png";
 import dg from "../assets/designer.svg";
 import DiscoAnimation from "./DiscoAnimation ";
+
 const Footer = () => {
   return (
     <div className="flex flex-col justify-center items-center w-full py-4">

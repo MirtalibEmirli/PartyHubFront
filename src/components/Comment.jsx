@@ -1,82 +1,146 @@
-import React from 'react';
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "../styles/swiper.css";
+import { tr } from "framer-motion/client";
+import vg from "../assets/vg2.svg";
+import dfimage from "../assets/df.png";
 
 const Comment = () => {
- 
+
   const reviews = [
     {
       id: 1,
       name: "Selena Gomez",
-      image: "https://upload.wikimedia.org/wikipedia/commons/8/81/Selena_Gomez_at_the_2024_Toronto_International_Film_Festival_10_%28cropped%29.jpg",
+      image: dfimage,
       review: "Bu tədbir inanılmaz idi! Gözəl təcrübə qazandım.",
     },
     {
       id: 2,
       name: "Chris Evans",
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Chris_Evans_SDCC_2014.jpg/800px-Chris_Evans_SDCC_2014.jpg",
+      image: dfimage,
       review: "Təşkilatçılıq mükəmməl idi. Əla vaxt keçirdim!",
     },
     {
       id: 3,
       name: "Emma Watson",
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Emma_Watson_2013.jpg/800px-Emma_Watson_2013.jpg",
+      image: dfimage,
       review: "Çox yaxşı tədbir idi. Yenidən iştirak edəcəyəm!",
     },
     {
       id: 4,
       name: "Harry Styles",
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Harry_Styles_2018.jpg/800px-Harry_Styles_2018.jpg",
+      image: dfimage,
       review: "Musiqi və atmosfer mükəmməl idi. Bunu qaçırmamalısınız!",
     },
     {
       id: 5,
       name: "Taylor Swift",
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Taylor_Swift_Red_Tour_5%2C_2013.jpg/800px-Taylor_Swift_Red_Tour_5%2C_2013.jpg",
+      image: dfimage,
       review: "Hər şey mükəmməl idi. Mənə inanılmaz anlar bəxş etdi!",
     },
     {
       id: 6,
       name: "Zendaya",
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Zendaya_Cannes_2019.jpg/800px-Zendaya_Cannes_2019.jpg",
+      image: dfimage,
       review: "Təşkilat çox peşəkar idi. Mən çox bəyəndim!",
     },
+    {
+      id: 7,
+      name: "Leonardo DiCaprio",
+      image: dfimage,
+      review: "Bu tədbirdə iştirak etmək mənim üçün xoş oldu!",
+    },
+    {
+      id: 8,
+      name: "Scarlett Johansson",
+      image: dfimage,
+      review: "Mükəmməl təşkil olunmuş bir tədbir idi!",
+    },
+    {
+      id: 9,
+      name: "Dwayne Johnson",
+      image: dfimage,
+      review: "Tədbirin enerjisi çox yüksək idi, çox bəyəndim!",
+    },
+    {
+      id: 10,
+      name: "Gal Gadot",
+      image: dfimage,
+      review: "Hər detal mükəmməl idi, təşkilatçılara təşəkkür edirəm!",
+    },
+    {
+      id: 11,
+      name: "Keanu Reeves",
+      image: dfimage,
+      review: "Tədbirdə iştirak etdiyim üçün çox şanslıyam!",
+    },
+    {
+      id: 12,
+      name: "Margot Robbie",
+      image: dfimage,
+      review: "Bu tədbir yaddaşıma unudulmaz anlar əlavə etdi!",
+    },
   ];
-  
-  
 
   return (
-    <div className="w-full bg-[#0D0D0D] py-10 mb-16">
-      <h2 className="text-center text-[#FF006E] text-3xl font-bold mb-6">
+    <div className="w-full   py-10 mb-16">
+      <h2 className="text-center text-[#FF006E] text-3xl font-orbitron h-[50px] lg:w-full mb-6">
         What people say
       </h2>
-
       <Swiper
         modules={[Navigation, Pagination]}
-        spaceBetween={20}
+        spaceBetween={5}
         slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
-        breakpoints={{
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
         }}
-        className="w-[90%] mx-auto"
+        pagination={{ clickable: true }}
+        centeredSlides={false}
+        breakpoints={{
+          768: { slidesPerView: 1, spaceBetween: 0 },
+          1024: { slidesPerView: 5, spaceBetween: 10 },
+        }}
+        className="relative w-[100%] "
       >
- 
         {reviews.map((review) => (
-          <SwiperSlide key={review.id}>
-            <div className="bg-[#FFFFFF03] w-[295px] h-[354px] gap-3 p-10 p-6 rounded-lg shadow-md text-white flex flex-col items-center">
-              <img
-                src={review.image}
-                alt={review.name}
-                className="w-20 h-20 rounded-full mb-4"
-              />
-              <h3 className="text-lg font-semibold">{review.name}</h3>
-              <p className="text-gray-400 text-sm text-center">{review.review}</p>
+          <SwiperSlide key={review.id} className="p-0 m-0">
+            <div
+              className="relative group w-[295px] h-[354px] 
+            gap-3 mt-5 ml-5 p-[3px]   shadow-md text-white flex flex-col transition-all duration-500"
+            >
+              {/* bu bizim borderdir */}
+              <div
+                className="absolute inset-0 bg-gradient-to-br from-[#3A86FF]  via-[#000000]
+                to-[#8338EC]  p-[4px] 
+              opacity-0 group-hover:opacity-100 transition-all duration-500"
+              ></div>
+
+              <div className="relative w-full h-full bg-[#0D0D0D]  p-8 flex flex-col items-center">
+                {/* images hisselerid */}
+                <div className="flex lg:w-[215px] lg:h-[80px] items-center lg:justify-between   filter grayscale group-hover:grayscale-0 transition-all duration-500">
+                  <img
+                    src={review.image}
+                    alt={review.name}
+                    className="w-16 h-16 rounded-full"
+                  />
+                  <img src={vg} className="lg:w-[27px] lg:h-auto hidden" />
+                </div>
+
+                {/* burada naming hsissesidi hansiki backden geelcek datadan gotercem */}
+                <div className="w-[215px] h-[182px] gap-2 items-center">
+                  <h3 className="text-lg font-semibold text-left w-full">
+                    {review.name}
+                  </h3>
+                  <p className="text-gray-400 text-sm text-left w-full">
+                    {review.review}
+                  </p>
+                </div>
+              </div>
             </div>
           </SwiperSlide>
         ))}
