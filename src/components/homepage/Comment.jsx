@@ -4,10 +4,9 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "../styles/swiper.css";
-import { tr } from "framer-motion/client";
-import vg from "../assets/vg2.svg";
-import dfimage from "../assets/df.png";
+import "../../styles/swiper.css";
+import vg from "../../assets/vg2.svg";
+import dfimage from "../../assets/df.png";
 
 const Comment = () => {
 
@@ -94,13 +93,15 @@ const Comment = () => {
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={5}
-        slidesPerView={1}
+        slidesPerView={5}
+        
         navigation={{
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         }}
-        pagination={{ clickable: true }}
+        pagination={{ clickable: true, dynamicBullets: true }}
         centeredSlides={false}
+        loop={false}
         breakpoints={{
           768: { slidesPerView: 1, spaceBetween: 0 },
           1024: { slidesPerView: 5, spaceBetween: 10 },

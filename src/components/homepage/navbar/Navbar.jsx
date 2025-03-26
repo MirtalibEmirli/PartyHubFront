@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import logo from "/logo.png";
+import logo from "../../../assets/logo.svg";
 import { Menu, X } from "lucide-react";
-import search from "../../assets/search-md.png";
+import search from "../../../assets/search-md.png";
 
 const Navbar = () => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const toggleNavbar = () => setMobileDrawerOpen(!mobileDrawerOpen);
-
+ 
   const navItems = [
     { label: "Discover", href: "#" },
     { label: "Event Places", href: "#" },
@@ -15,7 +15,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 py-3 backdrop-blur-md border-b border-neutral-700/80 bg-[#030813]">
+    <nav className="sticky top-0 z-50 py-3 backdrop-blur-md border-b border-neutral-700/80 bg-[#03081366]">
       <div className="container px-4 mx-auto relative text-sm flex items-center justify-between">
 
         <div className="flex items-center space-x-4">

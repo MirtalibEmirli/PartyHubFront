@@ -1,10 +1,10 @@
 import React from "react";
-import makeImg from "../assets/t1.png";
-import arl from "../assets/arrow-left.png";
-import arR from "../assets/arR.png";
-import insta from "../assets/instagram.png";
-import wp from "../assets/whatsapp.png";
-import dg from "../assets/designer.svg";
+import makeImg from "../../assets/t1.png";
+import arl from "../../assets/arrow-left.png";
+import arR from "../../assets/arR.png";
+import insta from "../../assets/instagram.png";
+import wp from "../../assets/whatsapp.png";
+import dg from "../../assets/designer.svg";
 import DiscoAnimation from "./DiscoAnimation ";
 
 const Footer = () => {
@@ -61,6 +61,8 @@ const Footer = () => {
       <div className=" w-[93%] bg-gray-500 h-[1px] overflow-hidden"></div>
 
       <div className="flex items-center lg:justify-around  lg:w-full  ">
+       
+       
         <div className="flex items-center justify-center space-x-2">
           <a href="#">
             <img src={wp} alt="WhatsApp" />
