@@ -4,9 +4,9 @@ import { FaCaretDown } from "react-icons/fa";
 const CustomSelect = ({ selectedOption, setSelectedOption, options, logo }) => {
   return (
     <div
-      className={`relative border-[1px] border-zinc-400   
-      ${logo ? "h-[33px] w-[150px]" : "h-[30px] w-[133px]"} focus-within:border-white  
-       rounded-md flex items-center justify-between px-3 `}
+      className={`relative border-[1px] border-zinc-400   bg-[#FFFFFF33]
+     h-[48px]  w-[295px] focus-within:border-white  
+       rounded-sm flex items-center justify-between px-3 text-white`}
     >
       {/* Logo */}
       {logo && (

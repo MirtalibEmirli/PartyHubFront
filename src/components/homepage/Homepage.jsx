@@ -9,7 +9,7 @@ const Homepage = () => {
     <div style={{ backgroundColor: "#030813" }}>
       <Navbar />
       <FindWhat/>
-      {/* <Comment /> */}
+      <Comment />
       <Footer />
     </div>
   );

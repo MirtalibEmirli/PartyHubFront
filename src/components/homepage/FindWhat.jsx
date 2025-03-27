@@ -1,21 +1,120 @@
-import React from "react";
-import eventimg from "../../assets/event.svg"
-import event2 from "../../assets/event2.svg"
-import event3 from "../../assets/event3.svg"
+import React, { useEffect, useState } from "react";
+import CustomSelect from "../common/CustomSelect";
+import axios from "axios";
+
 const FindWhat = () => {
-  
-  const events = [
-    { id: 1, name: "Party Night", date: "2025-04-12" ,img:eventimg},
-    { id: 2, name: "Music Fest", date: "2025-05-02" ,img:event3},
-    { id: 3, name: "Art Exhibition", date: "2025-04-25" ,img:eventimg},
-    { id: 4, name: "Food Carnival", date: "2025-06-10",img:event2 },
-    { id: 5, name: "Tech Meetup", date: "2025-04-30" ,img:event3},
-    { id: 6, name: "Movie Premiere", date: "2025-05-14" ,img:event2},
-    { id: 7, name: "Gaming Con", date: "2025-05-28" ,img:eventimg},
-    { id: 8, name: "Fashion Show", date: "2025-06-01" ,img:event3},
-    { id: 9, name: "Startup Pitch", date: "2025-04-20" ,img:event2},
-  ];
-  
+  const [events, setEvents] = useState([]);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState([
+    { value: "", title: "Choose category" },
+    { value: "Techno", title: "Techno" },
+    { value: "Pop", title: "Pop" },
+  ]);
+  const [venues, setVenues] = useState([
+    { value: "", title: "Choose venue" },
+    { value: "HayalKahvesi", title: "HayalKahvesi" },
+    { value: "JollyJoker", title: "JollyJoker" },
+    { value: "MoonBaku", title: "MoonBaku" },
+  ]);
+
+  const [filters, setFilters] = useState({
+    date: "",
+    category: "",
+    venue: "",
+    price: "",
+  });
+
+  const options = {
+    date: [
+      { value: "", title: "Choose date" },
+      { value: "today", title: "Today" },
+      { value: "this-week", title: "This Week" },
+      { value: "next-month", title: "Next Month" },
+    ],
+    category: categories,
+    venue: venues,
+    price: [
+      { value: "", title: "Price range" },
+      { value: "low", title: "Under 20₼" },
+      { value: "medium", title: "20₼ - 50₼" },
+      { value: "high", title: "Over 50₼" },
+    ],
+  };
+
+  const fetchEvents = async (reset = false) => {
+    try {
+      setLoading(true);
+      const response = await axios.get("https://localhost:7218/api/event", {
+        params: {
+          ...filters,
+          page: reset ? 1 : page,
+        },
+      });
+
+      const newEvents = response.data?.data
+       || [];
+
+      if (reset) {
+        setEvents(newEvents);
+        setPage(2);
+      } else {
+        setEvents((prev) => [...prev, ...newEvents]);
+        setPage((prev) => prev + 1);
+      }
+
+      setHasMore(newEvents.length >= 9);
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleFilterChange = (type, selected) => {
+    const newFilters = { ...filters, [type]: selected.value };
+    setFilters(newFilters);
+    setPage(1);
+  };
+
+  useEffect(() => {
+    fetchEvents(true);
+  }, [filters]);
+
+  useEffect(() => {
+    const fetchFilterOptions = async () => {
+      try {
+        const [categoryRes, venueRes] = await Promise.all([
+          axios.get("https://localhost:7218/api/EventCategoryHandler?Page=1&Limit=10"),
+          axios.get("https://localhost:7218/api/Venue/getAll"),
+        ]);
+
+        const fetchedCategories =
+        categoryRes.data?.data?.items?.map((c) => ({
+          value: c.categoryName,
+          title: c.categoryName,
+        })) || [];
+      
+
+        const fetchedVenues =
+          venueRes.data?.data?.map((v) => ({
+            value: v.id,
+            title: v.name,
+          })) || [];
+        setCategories([
+          { value: "", title: "Choose Category" },
+          ...fetchedCategories,
+        ]);
+        setVenues([{ value: "", title: "Choose venue" }, ...fetchedVenues]);
+
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchFilterOptions();
+  },[]);
+
   return (
     <div className="w-full py-10 flex flex-col items-center justify-center">
       <div className="text-center mb-8">
@@ -26,62 +125,67 @@ const FindWhat = () => {
           Use the filters and have the time of your life!
         </p>
       </div>
-
-      <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
-        {/* Dropdown 1 */}
-
-        <select className="w-[295px] h-[48px] bg-[#FFFFFF33] text-white px-4 rounded-sm border border-white/60 focus:outline-none focus:ring-2 focus:ring-[#FF006E]">
-          <option>Choose date</option>
-        </select>
-
-        {/* Dropdown 2 */}
-        <select
-          className="w-[295px] h-[48px] bg-[#FFFFFF33] text-white px-4 rounded-sm border
-         border-white/60 "
-        >
-          <option>Choose category</option>
-        </select>
-
-        {/* Dropdown 3 */}
-        <select
-          className="w-[295px] h-[48px] bg-[#FFFFFF33] text-white px-4 
-        rounded-sm border border-white/60 focus:outline-none focus:ring-2 focus:ring-[#FF006E]"
-        >
-          <option>Choose venue</option>
-        </select>
+  
+      {/* Filters */}
+      <div className="flex flex-wrap gap-4 mb-8 justify-center">
+        {Object.keys(options).map((key) => (
+          <CustomSelect
+            key={key}
+            selectedOption={options[key].find((o) => o.value === filters[key])}
+            setSelectedOption={(value) => handleFilterChange(key, value)}
+            options={options[key]}
+          />
+        ))}
       </div>
-
+  
+      {/* Events */}
       <div className="w-full flex justify-center py-10">
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-[1240px]">
-    {events.map((event) => (
-      <button
-        key={event.id}
-        className="w-[390px] h-[430px] bg-[#000000CC] 
-        text-white flex flex-col items-center justify-center rounded-lg shadow-lg grayscale hover:grayscale-0 transition-all duration-300"
-      >
-        <img
-          src={event.img}
-          alt="event"
-          className="w-full h-[320px] object-cover rounded-t-lg"
-        />
-        <div className="w-full p-4 flex flex-col justify-between h-[120px]">
-          <p className="text-sm text-gray-400">{event.date}</p>
-          <div className="flex justify-between items-center">
-            <h3 className="text-lg font-semibold">{event.name}</h3>
-            <span className="
-           flex items-center  text-sm bg-[#c800ff] px-3 py-1 rounded-sm lg:w-[92px] lg:h-[34px]">
-              from 15₼
-            </span>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-[1240px]">
+          {events.map((event) => (
+            <button
+            key={event.id}
+            className="relative w-[400px] h-[440px] bg-transparent 
+            text-white rounded-b-[2px] overflow-hidden group"
+          >
+          
+            <img
+              src={event.imageUrl}
+              alt="event"
+              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+            />
+          
+          
+            <div
+              className="absolute bottom-0 left-0 right-0 bg-black/80 
+              px-5 py-4 flex items-center justify-between"
+            >
+             
+              <p className="text-white text-sm font-medium">{event.date}</p>
+          
+             
+              <span className="bg-[#8338EC] gap-[10px] text-white h-[44px] flex items-center justify-center  text-[16px] font-semibold px-4 py-1 rounded-sm">
+                from {event.minPrice}₼
+              </span>
+            </div>
+          </button>
+          
+          ))}
         </div>
-      </button>
-
-    ))}
-  </div>
-</div>
-
+      </div>
+  
+      {/* Load More Button */}
+      {hasMore && (
+        <button
+          onClick={() => fetchEvents()}
+          disabled={loading}
+          className="mt-6 px-6 py-2 bg-[#FF006E] font-orbitron text-white rounded hover:cursor-pointer"
+        >
+          {loading ? "Loading..." : "Load More"}
+        </button>
+      )}
     </div>
   );
+  
 };
 
 export default FindWhat;
