@@ -15,7 +15,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 py-3 backdrop-blur-md border-b border-neutral-700/80 bg-[#03081366]">
+    <nav className="w-full top-0 z-50 py-3 backdrop-blur-md border-b border-neutral-700/80 bg-[#03081366] fixed">
       <div className="container px-4 mx-auto relative text-sm flex items-center justify-between">
 
         <div className="flex items-center space-x-4">
@@ -86,7 +86,7 @@ const Navbar = () => {
               Log in
             </button>
           </div>
-        </div>
+        </div> 
       )}
     </nav>
   );

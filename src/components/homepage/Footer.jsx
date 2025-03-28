@@ -88,3 +88,42 @@ const Footer = () => {
 };
 
 export default Footer;
+//   return (
+//     <div className="relative w-full min-h-[70vh] flex  lg:max-h-[100vh] overflow-hidden">
+//        <video
+//         src={events[0].video}
+//         muted
+//         autoPlay
+//         loop
+//         playsInline
+//         className="absolute top-0 left-0 w-full h-full object-cover z-0"
+//       />
+
+//       {/* Overlay Gradient */}
+//       <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10" />
+
+//       <div className="relative z-20 flex flex-col gap-4 px-6 md:px-16 max-w-[800px] py-10 lg:py-[56vh]">
+//         <h2 className="text-white font-orbitron text-3xl md:text-4xl leading-tight">
+//           {events[0].Title}
+//         </h2>
+//         <p className="text-[#CECECE]  font-poppins text-base md:text-base lg:w-[90vh] leading-relaxed">
+//           {events[0].Description}
+//         </p>
+//         <button className="flex items-center gap-3 bg-gradient-to-r from-[#FF006E]
+//          via-[#AA26C4] to-[#8338EC] text-white text-sm md:text-base px-5 py-3 rounded-sm w-fit">
+//           See Details <img className="w-6 h-6" src={arRight} alt="arrow" />
+//         </button>
+//       </div>
+
+
+
+
+ 
+//       <div className="relative z-20   lg:h-81vh lg:mt-36 flex gap-4 ">
+//         <img className=" lg:max-h-[70vh] " src={events[0].posterImg}  alt="" />
+//         <img className=" lg:max-h-[45vh] lg:mt-36  " src={nvr} alt="" />
+//       </div>
+
+//       {/* </Swiper> */}
+
+//     </div>

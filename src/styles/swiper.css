@@ -8,11 +8,12 @@
   width: 30px;
   height: 6px;
   border-radius: 10px;
-  background: #444;
+  background:white;
   transition: all 0.3s ease-in-out;
 }
 
 .swiper-pagination-bullet-active {
   background: #ff006e; 
+   
   width: 40px;
 }
