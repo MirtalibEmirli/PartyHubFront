@@ -10,13 +10,12 @@ const FindWhat = () => {
   const [categories, setCategories] = useState([
     { value: "", title: "Choose category" },
     { value: "Techno", title: "Techno" },
-    { value: "Pop", title: "Pop" },
-  ]);
+  
+  ])
   const [venues, setVenues] = useState([
     { value: "", title: "Choose venue" },
     { value: "HayalKahvesi", title: "HayalKahvesi" },
-    { value: "JollyJoker", title: "JollyJoker" },
-    { value: "MoonBaku", title: "MoonBaku" },
+    
   ]);
 
   const [filters, setFilters] = useState({
