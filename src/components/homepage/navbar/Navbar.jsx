@@ -3,7 +3,8 @@ import logo from "../../../assets/logo.svg";
 import { Menu, X } from "lucide-react";
 import search from "../../../assets/search-md.png";
 
-const Navbar = () => {
+const Navbar = ({variant = "light"}) => {
+  const isDark=variant==="dark";
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const toggleNavbar = () => setMobileDrawerOpen(!mobileDrawerOpen);
  
@@ -15,7 +16,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-full top-0 z-50 py-3 backdrop-blur-md border-b border-neutral-700/80 bg-[#03081366] fixed">
+    <nav className={`w-full top-0  py-3  border-b border-neutral-700/80 bg-[#03081366] fixed  ${isDark ? "bg-[#0f0f1f] text-white z-0" : "backdrop-blur-md z-50"}`}>
       <div className="container px-4 mx-auto relative text-sm flex items-center justify-between">
 
         <div className="flex items-center space-x-4">
