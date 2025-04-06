@@ -16,7 +16,7 @@ const Navbar = ({variant = "light"}) => {
   ];
 
   return (
-    <nav className={`w-full top-0  py-3  border-b border-neutral-700/80 bg-[#03081366] fixed  ${isDark ? "bg-[#0f0f1f] text-white z-0" : "backdrop-blur-md z-50"}`}>
+    <nav className={`w-full top-0 left-0 py-3 z-50  border-b border-neutral-700/80 bg-[#03081366] fixed   ${isDark ? "bg-[#0f0f1f] text-white" : "backdrop-blur-md" }`}>
       <div className="container px-4 mx-auto relative text-sm flex items-center justify-between">
 
         <div className="flex items-center space-x-4">

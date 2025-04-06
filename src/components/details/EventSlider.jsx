@@ -6,7 +6,7 @@ import { Navigation, Pagination } from "swiper/modules";
 
 const EventSlider = ({ media }) => {
   return (
-    <div className="w-full h-[550px] mt-[115px] md:h-[550px] lg:h-[600px] relative rounded-2xl overflow-hidden bg-[#0f0f1f] shadow-xl">
+    <div className="w-full h-[562px] mt-[114px]  rounded-[2px] overflow-hidden">
       <Swiper
         navigation
         pagination={{ clickable: true }}
@@ -34,6 +34,8 @@ const EventSlider = ({ media }) => {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      
     </div>
   );
 };
