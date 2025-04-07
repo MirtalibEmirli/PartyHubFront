@@ -13,7 +13,7 @@ const Homepage = () => {
       <HeroSection/>
       <Trending/>
       <FindWhat/>
-      <Comment />
+      {/* <Comment /> */}
       <Footer />
     </div>
   );
